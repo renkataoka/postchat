@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -16,3 +15,4 @@ module Postchat
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+config.assets.initialize_on_precompile = false
