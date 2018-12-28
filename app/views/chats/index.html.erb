@@ -1,0 +1,32 @@
+<%= render 'index' %>
+<body class="container">
+  <h1 class="col-md-12">チャット一覧</h1>
+  <p><%= notice %></p>
+
+  <table>
+    <tr class="row">
+      <th class="col-md-1">名前</th>
+      <th class="col-md-5">内容</th>
+    </tr>
+
+  <% @chats.each do |chat| %>
+    <tr class="row">
+      <td class="col-sm-6 col-md-1"><%= chat.name %></td>
+      <td class="col-sm-6 col-md-5"><%= chat.content %></td>
+
+      <td class="col-sm-4 col-md-2"><%= link_to '詳細を確認する',chat_path(chat.id) %></td>
+      <td class="col-sm-4 col-md-2"><%= link_to 'チャットを編集する',edit_chat_path(chat.id) %></td>
+      <td class="col-sm-4 col-md-2"><%= link_to 'チャットを削除する',chat_path(chat.id), data: {confirm: '本当に削除していいですか？'}, method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <div class="post">
+    <%= link_to '新しくチャットを投稿する', new_chat_path %>
+  </div>
+</body>
+
+<footer>
+  <p>Created by RenKataoka From Renosy Scholarship </p>
+
+</footer>
