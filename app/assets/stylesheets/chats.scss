@@ -1,25 +1,3 @@
-header {
-  width: 100%;
-  background-color: #778;
-  height: 54px;
-}
-
-header ul {
-  margin: 0 auto;
-  list-style: none;
-}
-
-header ul a {
-  display: block;
-  padding: 15px;
-  text-decoration: none;
-  color: white;
-}
-
-header li {
-  float: left;
-  width: auto;
-}
 
 
 header ul:after {
@@ -49,16 +27,20 @@ div.post{
   padding-top: 50px;
 }
 
+ul{
+  list-style: none;
+}
+
 footer {
-  width: 100%;
+  width:90%;
   background-color:#e3f2fd;
   padding: 20px 0 10px 0;
   color: #66b;
-  margin: auto;
   padding-bottom: 5px;
   font-size: 12px;
   position: absolute;
   bottom: 0;
+  right:5%;
 }
 
 html {
