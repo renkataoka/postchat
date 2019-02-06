@@ -3,9 +3,12 @@
 <h3>以下の内容で、送信する。</h3>
 
 <%= form_with(model: @chat, url: chats_path,local: true) do |form| %>
+  <%= form.hidden_field :name %>
   <%= form.hidden_field :content %>
 
-  <p>本文:<%= @chat.content %></p>
+  <p>Name:<%= @chat.name %></p>
+  <p>Content:<%= @chat.content %></p>
+
   <%= form.submit "登録する" %>
 <% end %>
 

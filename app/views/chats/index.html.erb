@@ -2,16 +2,19 @@
 <body class="container">
   <h1 class="col-md-12">チャット一覧</h1>
   <p><%= notice %></p>
-
+  <ul class="row">
+    <li class="col-xs-4 col-md-2">Name</li>
+    <li class="col-xs-8 col-md-4">Content</li>
+  </ul>
 
   <% @chats.each do |chat| %>
     <ul class="row">
-      <li class="col-xs-12 col-md-1">内容</li>
-      <li class="col-xs-12 col-md-5 content"><%= chat.content %></li>
+      <li class="col-xs-4 col-md-2 name"><%= chat.name %></li>
+      <li class="col-xs-8 col-md-4 content"><%= chat.content %></li>
 
-      <li class="col-xs-12 col-md-2 edit"><%= link_to '詳細を確認する',chat_path(chat.id) %></li>
-      <li class="col-xs-12 col-md-2 edit"><%= link_to 'チャットを編集する',edit_chat_path(chat.id) %></li>
-      <li class="col-xs-12 col-md-2 edit"><%= link_to 'チャットを削除する',chat_path(chat.id), data: {confirm: '本当に削除していいですか？'}, method: :delete %></li>
+      <li class="col-xs-4 col-md-2 edit"><%= link_to '詳細を確認する',chat_path(chat.id) %></li>
+      <li class="col-xs-4 col-md-2 edit"><%= link_to 'チャットを編集する',edit_chat_path(chat.id) %></li>
+      <li class="col-xs-4 col-md-2 edit"><%= link_to 'チャットを削除する',chat_path(chat.id), data: {confirm: '本当に削除していいですか？'}, method: :delete %></li>
     </ul>
   <% end %>
 

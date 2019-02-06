@@ -10,11 +10,15 @@
     </div>
   <% end %>
 
-
+  <div class="user_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
   <div class="chat_content">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  
   <%= form.submit %>
 <% end %>
 

@@ -49,7 +49,7 @@ class ChatsController < ApplicationController
   private
 
   def chat_params
-    params.require(:chat).permit(:content)
+    params.require(:chat).permit(:content,:name)
   end
 
   def set_chat
