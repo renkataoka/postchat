@@ -10,7 +10,7 @@
   <% @chats.each do |chat| %>
     <ul class="row">
       <li class="col-xs-4 col-md-2 name"><%= chat.name %></li>
-      <li class="col-xs-8 col-md-4 content"><%= chat.content %></li>
+      <li class="col-xs-8 col-md-4 content"><%= link_to chat.content,chat_path(chat.id) %></li>
 
       <li class="col-xs-4 col-md-2 edit"><%= link_to '詳細を確認する',chat_path(chat.id) %></li>
       <li class="col-xs-4 col-md-2 edit"><%= link_to 'チャットを編集する',edit_chat_path(chat.id) %></li>
