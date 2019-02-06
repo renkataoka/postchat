@@ -7,7 +7,7 @@ You can POST, EDIT, CONFIRM, and DELETE.
 ## Dependency  
 ruby : 2.2.2 or more  
 Rails : 5.1 or more  
-VirtualBox : 5.2
+VirtualBox : 5.2  
 Vagrant 2.1.2
 
 ## Setup  
@@ -16,6 +16,7 @@ First, install rails
 
 Then, change directory to postchat  
 '$ cd postchat'  
+
 And install gem packages  
 '$ bundle install'  
 
@@ -31,7 +32,8 @@ Set database
 '$ rails db:create'  
 '$ rails db:migrate'  
 
-
+Start the rails server!  
+'$ rails server'
 
 ## Authors  
 Ren Kataoka(University of Tsukuba)  
