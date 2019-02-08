@@ -3,12 +3,14 @@
   <head>
     <title>PostChat</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
     <%= yield %>
   </body>
   <footer>

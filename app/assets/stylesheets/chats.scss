@@ -1,5 +1,4 @@
 
-
 header ul:after {
   content: "";
   display: block;
@@ -31,11 +30,6 @@ div.show{
   font-size: 16px;
 }
 
-h3#show_head{
-  padding: 10px 50px;
-  border:groove 2px;
-}
-
 ul{
   list-style: none;
 }
@@ -57,7 +51,7 @@ li.name{
 
 footer {
   width:90%;
-  background-color:#e3f2fd;
+  background-color:#d3f2fd;
   padding: 20px 0 10px 0;
   color: #66b;
   padding-bottom: 5px;

@@ -1,6 +1,10 @@
 class ChatsController < ApplicationController
   before_action :set_chat,only: [:show, :edit, :update, :destroy]
 
+  def home
+    @chat = Chat.all
+  end
+
   def index
     @chats = Chat.all
   end

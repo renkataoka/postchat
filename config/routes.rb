@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "chats#index"
+  root "chats#home"
   #resources :chats
 
   resources :chats do
