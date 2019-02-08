@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :chats do
     collection do
       post :confirm
+      get :contact
     end
   end
+
 end

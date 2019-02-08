@@ -13,6 +13,10 @@ class ChatsController < ApplicationController
     end
   end
 
+  def contact
+
+  end
+
   def create
     @chat = Chat.new(chat_params)
     if @chat.save
@@ -45,6 +49,7 @@ class ChatsController < ApplicationController
     @chat.destroy
     redirect_to chats_path, notice:"チャットを削除しました！"
   end
+
 
   private
 
