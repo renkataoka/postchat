@@ -18,7 +18,9 @@ class ChatsController < ApplicationController
   end
 
   def contact
+  end
 
+  def help
   end
 
   def create

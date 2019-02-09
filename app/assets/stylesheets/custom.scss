@@ -34,9 +34,8 @@ p {
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: lighter;
-}
-
-#logo:hover {
-  color: #66d;
-  text-decoration: none;
+  &:hover {
+    color: #66d;
+    text-decoration: none;
+  }
 }

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :chats do
     collection do
       post :confirm
-      get :contact
-      get :home
     end
   end
 
+  get '/contact', to: 'chats#contact'
+  get '/help', to: 'chats#help'
 end
