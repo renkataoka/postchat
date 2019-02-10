@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'chats#contact'
   get '/help', to: 'chats#help'
   get '/signup', to: 'users#new'
+
+  resources :users
 end
