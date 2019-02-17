@@ -15,6 +15,13 @@ CarrierWave.configure do |config|
       region: ENV['S3_REGION'],
       path_style: true
     }
+    config.fog_public = true
+    config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
+
+    config.remove_previously_stored_files_after_update = false
+
+    config.fog_directory = ENV['S3_BUCKET']
+    config.asset_host = ENV['S3_URL']
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
