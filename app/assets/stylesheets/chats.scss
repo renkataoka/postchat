@@ -5,15 +5,6 @@ header ul:after {
   clear: both;
 }
 
-body{
-  background-color: rgba(120,130,190,0.3);
-  color:#333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  text-align: center;
-}
-
 th{
   text-align: center;
 }
@@ -38,28 +29,11 @@ li.name{
   font-size: 20px;
 }
 
-.content{
-  padding:5px;
-  height:30px;
-  font-size:20px;
-}
-
 .edit{
   padding:3px;
   border:groove 2px;
 }
 
-footer {
-  width:90%;
-  background-color:#d3f2fd;
-  padding: 20px 0 10px 0;
-  color: #66b;
-  padding-bottom: 5px;
-  font-size: 12px;
-  position: absolute;
-  bottom: 0;
-  right:5%;
-}
 
 html {
   position: relative;

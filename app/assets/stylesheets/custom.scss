@@ -1,3 +1,25 @@
+/* universal */
+
+body {
+  background-color: rgba(120,130,190,0.3);
+  color:#333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
 
 /* typography */
 
@@ -32,6 +54,8 @@ p {
   box-sizing: border-box;
 }
 
+/* miscellaneous */
+
 .debug_dump {
   clear: both;
   float: left;
@@ -53,6 +77,20 @@ p {
     color: #66d;
     text-decoration: none;
   }
+}
+
+/* footer */
+
+footer {
+  width:90%;
+  background-color:#d3f2fd;
+  padding: 20px 0 10px 0;
+  color: #66b;
+  padding-bottom: 5px;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  right:5%;
 }
 
 /* sidebar */
@@ -100,8 +138,8 @@ aside {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid gray-lighter;
-    color: gray;
+    border-left: 1px solid #666;
+    color: #666;
     &:first-child {
       padding-left: 0;
       border: 0;
@@ -152,14 +190,7 @@ input {
     margin: 0 0 30px 0;
   }
 }
-/*
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-*/
+
 
 .checkbox {
   margin-top: -10px;
@@ -184,7 +215,7 @@ input {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #666;
   }
 }
 .pagination{
@@ -206,17 +237,20 @@ input {
     padding-top: 0;
   }
   .content {
+    padding:8px 0;
     display: block;
     margin-left: 60px;
+    font-size: 1.1em;
     img {
       display: block;
       padding: 5px 0;
     }
   }
   .timestamp {
-    color: gray-lighter;
+    color: #888;
     display: block;
     margin-left: 60px;
+    font-size: 0.9em;
   }
   .gravatar {
     float: left;
