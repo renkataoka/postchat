@@ -17,6 +17,9 @@
         </span>
         <span class="thumb">
           <%= form_for(@user) do |f| %>
+            <%= f.hidden_field :name, :value => @user.name %>
+            <%= f.hidden_field :email, :value => @user.email %>
+
             <%= f.file_field :thumb, accept: 'image/jpeg,image/gif,image/png' %>
             <%= f.submit "Change Thumbnail", class: "btn btn-primary" %>
           <% end %>
