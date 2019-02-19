@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "chats#home"
+  get '/about', to: 'chats#about'
   get '/contact', to: 'chats#contact'
   get '/help', to: 'chats#help'
   get '/signup', to: 'users#new'
