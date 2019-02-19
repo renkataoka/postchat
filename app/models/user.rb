@@ -102,6 +102,15 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  #ユーザ検索をしていたら、対象のユーザのみ表示する。
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
+
   private
     #メールアドレスをすべて小文字にする
     def downcase_email

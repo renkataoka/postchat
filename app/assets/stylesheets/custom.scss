@@ -123,14 +123,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
 
 .stats {
   overflow: auto;
@@ -167,7 +159,7 @@ aside {
 .user_avatars {
   float:left;
   margin-top: 10px;
-  .gravatar {
+  .thumb {
     margin: 1px 1px;
   }
   a {
@@ -228,8 +220,12 @@ input {
     border-bottom: 1px solid #666;
   }
 }
-.pagination{
-  padding:10px;
+.pagination {
+  padding: 10px;
+}
+.search {
+  width: 30%;
+  margin: auto;
 }
 
 /* microposts */
@@ -262,7 +258,7 @@ input {
     margin-left: 60px;
     font-size: 0.9em;
   }
-  .gravatar {
+  .thumb {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
