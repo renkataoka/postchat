@@ -2,12 +2,26 @@
   <aside class="col-xs-4 col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
+        <%= image_tag @user.thumb.thumb.url, class: "thumb" if @user.thumb? %>
         <%= @user.name %>
       </h1>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
+    </section>
+    <section class="biog">
+      <%= render 'shared/biog' %>
+      <% if @user == current_user %>
+        <span>
+          <%= link_to "edit my profile", edit_user_path(current_user) %>
+        </span>
+        <span class="thumb">
+          <%= form_for(@user) do |f| %>
+            <%= f.file_field :thumb, accept: 'image/jpeg,image/gif,image/png' %>
+            <%= f.submit "Change Thumbnail", class: "btn btn-primary" %>
+          <% end %>
+        </span>
+      <% end %>
     </section>
   </aside>
   <div class="col-xs-8 col-md-8">
@@ -21,3 +35,13 @@
     <% end %>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $('#user_thumb').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

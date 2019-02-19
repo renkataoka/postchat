@@ -97,11 +97,12 @@ footer {
 
 aside {
   section.user_info {
+    text-align: left;
     margin-top:20px;
   }
   section {
-    padding: 10px 0;
-    margin-top: 20px;
+    padding: 5px 0;
+    margin-top: 10px;
     &:first-child {
       border: 0;
       padding-top: 0;
@@ -151,6 +152,15 @@ aside {
   }
   strong {
     display: block;
+  }
+}
+
+.biog {
+  text-align: left;
+  font-size: 1.1em;
+  overflow: auto;
+  span {
+    margin:5px 0;
   }
 }
 

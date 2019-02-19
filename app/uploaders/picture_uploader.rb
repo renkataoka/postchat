@@ -2,6 +2,16 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+
+  #サムネイル画像
+  version :thumb do
+    process resize_to_fill: [60, 60]
+  end
+
+  version :feed do
+    process resize_to_fill: [50, 50]
+  end
+
   process resize_to_limit: [400, 400]
 
   # Choose what kind of storage to use for this uploader:

@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-
+  default_scope -> { order(:name) }
+  mount_uploader :thumb, PictureUploader
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -111,5 +112,12 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)  #今回はbefore_createで用いるため、update_attributeでデータベースの値を更新しなくてよい。
+    end
+
+    #アップロードされた画像のサイズをバリデーションする
+    def thumb_size
+      if thumb.size > 5.megabytes
+        errors.add(:thumb, "should be less than 5MB.")
+      end
     end
 end
