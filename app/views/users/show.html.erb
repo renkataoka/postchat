@@ -1,5 +1,5 @@
 <div class="row">
-  <aside class="col-xs-4 col-md-4">
+  <aside class="col-xs-12 col-md-4">
     <section class="user_info">
       <h1>
         <%= image_tag @user.thumb.thumb.url, class: "thumb" if @user.thumb? %>
@@ -24,7 +24,7 @@
       <% end %>
     </section>
   </aside>
-  <div class="col-xs-8 col-md-8">
+  <div class="col-xs-12 col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
