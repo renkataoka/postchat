@@ -50,4 +50,51 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     get root_path
     assert_match "1 micropost", response.body
   end
+
+  test "reply to other user" do
+    log_in_as(@user)
+    get root_path
+    #存在しないIDへのリプライ
+    assert_no_difference 'Micropost.count' do
+      post microposts_path, params: {micropost: {content: "@10000" } }
+    end
+    assert_select 'div#error_explanation'
+    #自分自身へのリプライ
+    assert_no_difference 'Micropost.count' do
+      post microposts_path, params: {micropost: {content: "@#{@user.id}-#{@user.name.gsub(" ", "-")}" } }
+    end
+    assert_select 'div#error_explanation'
+    #間違ったIDユーザ名へのリプライ
+    other_user = users(:archer)
+    assert_no_difference 'Micropost.count' do
+      post microposts_path, params: {micropost: {content: "@#{other_user.id}-invalid" } }
+    end
+    assert_select 'div#error_explanation'
+    #正しいリプライ
+    assert_difference 'Micropost.count', 1 do
+      post microposts_path, params: {micropost: {content: "@#{other_user.id}-#{other_user.name.gsub(" ", "-")}" } }
+    end
+  end
+
+  test "should reply is visible from only concerned users" do
+    log_in_as(@user)
+    get root_path
+    reply_to_user = users(:archer)
+    content = "@#{reply_to_user.id}-#{reply_to_user.name.gsub(" ", "-")}"
+    post microposts_path, params: {micropost: {content: content } }
+    follow_redirect!
+    assert_match content, response.body
+
+    #リプライされたユーザ
+    log_in_as(reply_to_user)
+    get root_path
+    assert_match content, response.body
+
+    #関係ないユーザ
+    other_user = users(:malory)
+    log_in_as(other_user)
+    get root_path
+    assert_no_match content, response.body
+  end
+
 end
