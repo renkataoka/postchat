@@ -22,7 +22,7 @@ textarea {
 }
 
 .btn, .btn-primary {
-  width: 40%;
+  
 }
 
 /* typography */
@@ -35,14 +35,12 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: #777;
 }
@@ -280,5 +278,13 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* About */
+.about {
+  text-align: left;
+  b {
+    border-bottom: solid 1px;
   }
 }
