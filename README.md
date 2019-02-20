@@ -11,14 +11,14 @@ VirtualBox : 5.2
 Vagrant 2.1.2
 
 ## Setup  
-**To check vagrant settting, please check [Vagrantfile](/Vagrantfile)**
+**To check vagrant settting, please check [Vagrantfile](/Vagrantfile).**
 
 First, clone this repository.
 
 Then, install gem packages
 '$ bundle install'  
 
-Install Yarn from (https://yarnpkg.com/en/docs/install#debian-stable)  
+Install Yarn from (https://yarnpkg.com/en/docs/install#debian-stable).  
 Then, install jquery and bootstrap.  
 '$ yarn add jquery'  
 '$ yarn add bootstrap@3'  
@@ -35,7 +35,7 @@ Create ubuntu user
 'postgres=# CREATE USER ubuntu SUPERUSER;'  
 'postgres=# \q'
 
-Set database
+Set database  
 '$ rails db:create'  
 '$ rails db:migrate'  
 
@@ -50,6 +50,6 @@ Ren Kataoka(University of Tsukuba)
 
 ## References
 https://railstutorial.jp/  
-Renosy Scholarship by GA technologies
-https://qiita.com/YN6127yn/items/f701474d2c0276b52bfb
-http://mochikichi.hatenablog.com/entry/2017/03/26/113022
+Renosy Scholarship by GA technologies  
+https://qiita.com/YN6127yn/items/f701474d2c0276b52bfb  
+http://mochikichi.hatenablog.com/entry/2017/03/26/113022  
