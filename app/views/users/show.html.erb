@@ -1,7 +1,8 @@
 <div class="row">
   <aside class="col-xs-12 col-md-4">
     <%= render 'show_aside' %>
-    <% if !current_user?(@user) && logged_in? %>
+    <%# <% if !current_user?(@user) && logged_in? %>
+    <% if false %>
       <section class="message_box">
         <div id="messages">
           <%= render @messages %>
