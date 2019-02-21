@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user,only: [:show, :edit, :update, :destroy, :following, :followers]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :corrext_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
   def index
@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   def show
     redirect_to root_url and return unless @user.activated?
     @microposts = @user.microposts.paginate(page: params[:page]).search(params[:search])
+    @room_id = message_room_id(current_user, @user)
+    @messages = Message.recent_in_room(@room_id)
   end
 
   def edit
@@ -58,6 +60,16 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def message_room_id(first_user, second_user)
+    first_id = first_user.id.to_i
+    second_id = second_user.id.to_i
+    if first_id < second_id
+      "#{first_user.id}-#{second_user.id}"
+    else
+      "#{second_user.id}-#{first_user.id}"
+    end
+  end
+
   private
 
     def user_params
@@ -69,7 +81,7 @@ class UsersController < ApplicationController
     end
 
     #正しいユーザか確認
-    def corrext_user
+    def correct_user
       redirect_to(root_url) unless current_user?(@user)
     end
 

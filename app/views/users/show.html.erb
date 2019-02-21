@@ -1,31 +1,28 @@
 <div class="row">
   <aside class="col-xs-12 col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= image_tag @user.thumb.thumb.url, class: "thumb" if @user.thumb? %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="biog">
-      <%= render 'shared/biog' %>
-      <% if @user == current_user %>
-        <span>
-          <%= link_to "edit my profile", edit_user_path(current_user) %>
-        </span>
-        <span class="thumb">
-          <%= form_for(@user) do |f| %>
-            <%= f.hidden_field :name, :value => @user.name %>
-            <%= f.hidden_field :email, :value => @user.email %>
+    <%= render 'show_aside' %>
+    <% if !current_user?(@user) && logged_in? %>
+      <section class="message_box">
+        <div id="messages">
+          <%= render @messages %>
+        </div>
+      </section>
 
-            <%= f.file_field :thumb, accept: 'image/jpeg,image/gif,image/png' %>
-            <%= f.submit "Change Thumbnail", class: "btn btn-primary" %>
-          <% end %>
-        </span>
-      <% end %>
-    </section>
+      <!-- メッセージの合計の高さを計算し、スクロール開始位置を一番下に指定する -->
+      <script type="text/javascript">
+        var height = 0;
+        $("div.message").each( function() {
+          height += ($(this).height());
+        });
+        $('section.message_box').scrollTop(height);
+      </script>
+
+      <div class="message_form">
+        <%= render 'messages/message_form', {from_user: current_user,
+                                             to_user: @user,
+                                             room_id: @room_id } %>
+      </div>
+    <% end %>
   </aside>
   <div class="col-xs-12 col-md-8">
     <%= render 'follow_form' if logged_in? %>

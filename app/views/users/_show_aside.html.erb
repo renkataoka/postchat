@@ -1,0 +1,20 @@
+<section class="user_info">
+  <h1>
+    <%= image_tag @user.thumb.thumb.url, class: "thumb" if @user.thumb? %>
+    <%= @user.name %>
+  </h1>
+</section>
+<section class="stats">
+  <%= render 'shared/stats' %>
+</section>
+<section class="biog">
+  <%= render 'shared/biog' %>
+  <% if @user == current_user %>
+    <span>
+      <%= link_to "edit my profile", edit_user_path(current_user) %>
+    </span>
+    <span class="thumb">
+      <%= render 'shared/form_thumb' %>
+    </span>
+  <% end %>
+</section>

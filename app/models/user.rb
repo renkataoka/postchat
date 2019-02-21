@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  #UserとMicropostの関連付け。Userを消すときに、そのUserのMicropostも消す。
   has_many :microposts, dependent: :destroy
+  #UserとRelationshipの関連付け。followする側(active)とされる側(passive)で2種類の実装。
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -8,14 +10,25 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  #UserとMessageの関連付け。DMを送る側(from)と受け取る側(to)で2種類の実装。
+  has_many :from_messages, class_name: "Message",
+                           foreign_key: "from_id",
+                           dependent: :destroy
+  has_many :from_messages, class_name: "Message",
+                           foreign_key: "to_id",
+                           dependent: :destroy
+  has_many :sent_messages, through: :from_messages, source: :from
+  has_many :received_messages, through: :to_messages, source: :to
 
+  #Scopes
   default_scope -> { order(:name) }
   mount_uploader :thumb, PictureUploader
   attr_accessor :remember_token, :activation_token, :reset_token
+  #CallBacks
   before_save :downcase_email
   before_create :create_activation_digest
 
-
+  #Validations
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255},
@@ -110,6 +123,10 @@ class User < ApplicationRecord
     else
       all
     end
+  end
+
+  def send_message(user, other_user, room_id, content)
+    from_messages.create!(from_id: user.id, to_id: other_user.id, room_id: room_id, content: content)
   end
 
   private

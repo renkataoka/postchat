@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190219121215) do
+ActiveRecord::Schema.define(version: 20190220143802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20190219121215) do
   create_table "chats", force: :cascade do |t|
     t.text "content"
     t.string "name"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "from_id"
+    t.integer "to_id"
+    t.string "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id", "created_at"], name: "index_messages_on_room_id_and_created_at"
   end
 
   create_table "microposts", force: :cascade do |t|
